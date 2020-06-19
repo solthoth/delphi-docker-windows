@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{78E49EB0-E325-4EBD-885D-79021E7B7663}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="DelphiOnDocker.Console.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="DelphiOnDocker_Console">
+        <MSBuild Projects="DelphiOnDocker.Console.dproj"/>
+    </Target>
+    <Target Name="DelphiOnDocker_Console:Clean">
+        <MSBuild Projects="DelphiOnDocker.Console.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DelphiOnDocker_Console:Make">
+        <MSBuild Projects="DelphiOnDocker.Console.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="DelphiOnDocker_Console"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="DelphiOnDocker_Console:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="DelphiOnDocker_Console:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
